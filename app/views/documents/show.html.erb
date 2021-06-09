@@ -1,0 +1,19 @@
+<%if @document%>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Upload Date</th>
+      <th>Size</th>
+      <th>Actions</th>
+      <th>Shared By</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= render @document, shared_by:true%>
+</tbody>
+</table>
+
+<%else %>
+    <p> Access Restricted</p>
+<%end%>

@@ -1,0 +1,36 @@
+
+<script>
+  const uploadFile = (context) => {
+    document.getElementById("upload_form").submit()
+  }
+</script>
+
+<%= button_to 'Update Profile', edit_user_path(id: @user.id), method: :get%>
+    <%= button_to "Logout", '/logout', method: :get%>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Upload Date</th>
+      <th>Size</th>
+      <th>Actions</th>
+      <th>Sharing</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= render @user.documents, shared_by: false %>
+</tbody>
+</table>
+
+
+<%# <%= link_to "upload file", upload_path %>   
+<%# <%= form.label :document %> 
+<br/>
+<%= form_with model: @document, url: "/documents", method: "POST", multipart: true, :id => "upload_form"  do |form| %>
+<label for="file_upload" style="padding: 5px; margin-top: 15px; border-width: 2px; border: solid #000;">Upload Image</label>
+<%= form.file_field :document, :onchange => "uploadFile()", :id => "file_upload", :style => "display:none; margin: 10px" %>
+<% end %>
+
+

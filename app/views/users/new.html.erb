@@ -1,0 +1,22 @@
+<h1>Sign Up</h1>
+<%= form_for @user, local: true do |f|%>
+  <%= f.label :username%><br>
+  <%= f.text_field :username%><br>
+  <% @user.errors.full_messages_for(:username).each do |message| %>
+      <div><%= message %></div>
+  <% end %>
+  <br/>
+  <%= f.label :name%><br/>
+  <%= f.text_field :name%><br/><br/>
+  <%= f.label :email%><br/>
+  <%= f.text_field :email%><br/><br/>
+  <%= f.label :password%><br/>
+  <%= f.password_field :password%><br>
+  <% @user.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %></div>
+  <% end %>
+  <br/>
+  <%= f.submit %>
+<%end%>
+  <%= button_to "Login", '/login', method: :get%>
+
